@@ -2,10 +2,14 @@ class ToursController <  ApplicationController
     before_action :checkUser
 
     def checkUser
-        if session[:user_id]==nil
-            redirect_to sign_up_path, notice: "Logged Out"
+        if session[:user_id].present?
+            if User.exists?session[:user_id]
+                @user = User.find(session[:user_id])
+            else
+                redirect_to sign_up_path, notice: "Login Please"
+            end
         else
-            @user = User.find(session[:user_id])
+            redirect_to sign_up_path, notice: "Logged Out"
         end
     end
 
@@ -17,7 +21,7 @@ class ToursController <  ApplicationController
     end
 
     def showTour
-        puts params
+        # puts params
         @chosen_tour = Tour.find(params[:param])
         render "showTour"
     end
@@ -27,18 +31,18 @@ class ToursController <  ApplicationController
         user = User.find(session[:user_id])
         if tour.passenger_limit == 0
             flash[:error] = "Tour is completely booked!"
-        redirect_to tours_path
+            redirect_to tours_path
         else
             new_ticket = Ticket.new
             new_ticket.user_id = user.id
             new_ticket.tour_id = tour.id
 
             new_ticket.save
+            flash[:success] = "Successfully Booked Ticket for " + tour.tour_code.to_s
+            tour.passenger_limit = tour.passenger_limit - 1
+            tour.save
+            redirect_to tours_path
         end
-        flash[:success] = "Successfully Booked Ticket for " + tour.tour_code.to_s
-        tour.passenger_limit = tour.passenger_limit - 1
-        tour.save
-        redirect_to tours_path
     end
 
     def bookTicketWithCompanion

@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
     before_action :checkUser
 
     def checkUser
-        if session[:user_id]
+        if session[:user_id].present?
             if User.exists?session[:user_id]
                 @user = User.find(session[:user_id])
             else

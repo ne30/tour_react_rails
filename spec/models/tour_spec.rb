@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Tour, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have many tickets" do
+    t = Tour.reflect_on_association(:tickets)
+    expect(t.macro).to eq(:has_many)
+  end
 end

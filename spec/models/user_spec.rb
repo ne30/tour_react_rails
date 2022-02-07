@@ -26,4 +26,9 @@ RSpec.describe User, type: :model do
         expect(temp_user).to_not be_valid
     end
 
+    it "should have many tickets" do
+        t = User.reflect_on_association(:tickets)
+        expect(t.macro).to eq(:has_many)
+    end
+    
 end

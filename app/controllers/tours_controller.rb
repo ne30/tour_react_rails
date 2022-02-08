@@ -13,6 +13,20 @@ class ToursController <  ApplicationController
         end
     end
 
+    def new
+    end
+
+    def create
+        @new_tour = Tour.new(tourParams)
+        if @new_tour.save
+            flash[:success] = "Successfully added tour " + @new_tour.tour_code.to_s
+            redirect_to tours_path
+        else
+            flash[:error] = "Something went wrong while adding the tour."
+            redirect_to add_tour_path
+        end
+    end
+
     def showAllTour
         @tours = Tour.all
         @tickets = Ticket.all
@@ -83,5 +97,14 @@ class ToursController <  ApplicationController
             tour.save
             redirect_to tours_path
         end
+    end
+
+    private 
+    def tourParams
+        params.permit(:tour_code, :from, :to, :start_time, :end_time, :passenger_limit, :price, :date)
+    end
+
+    def validateTour(tour)
+        return tour.valid?
     end
 end

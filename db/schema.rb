@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_175733) do
+ActiveRecord::Schema.define(version: 2022_02_08_083211) do
 
   create_table "companions", force: :cascade do |t|
     t.integer "gender"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 2022_02_02_175733) do
     t.string "tour_code"
     t.string "from"
     t.string "to"
-    t.string "day"
     t.time "start_time"
     t.time "end_time"
     t.integer "passenger_limit"
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
   end
 
   create_table "users", force: :cascade do |t|

@@ -28,3 +28,9 @@ end
 #     tour.price = gets.chomp.to_f
 #     tour.save   
 # end
+
+# tours.each do |tour|
+#        tour.date = temp_date
+#        temp_date = temp_date.plus_with_duration(Random.rand(10))
+#        tour.save
+#      end

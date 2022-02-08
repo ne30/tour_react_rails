@@ -6,7 +6,6 @@ class RegistrationsController < ApplicationController
     def create
         @user = User.new(userParams)
         if @user.save
-            session[:user_id] = @user_id
             flash[:success] = "Successfully created account"
             redirect_to sign_in_path
         else

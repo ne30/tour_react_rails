@@ -7,6 +7,7 @@
       <th>Ticket Code</th>
       <th>From </th>
       <th>To </th>
+      <th>Date </th>
       <th>Tour Code</th>
       <th>Companion User Name</th>
     </tr>
@@ -16,6 +17,7 @@
       <td><%= ticket.id %></td>
       <td><%= ticket.tour.from %></td>
       <td><%= ticket.tour.to %></td>
+      <td><%= ticket.tour.date.strftime('%A, %d/%m/%Y') %></td>
       <td><%= ticket.tour.tour_code %></td>
       <td><%= ticket.companion_user_name %></td>
       </tr>

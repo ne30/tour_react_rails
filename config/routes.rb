@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   get "admin", to: "admin#new"
   post "admin", to: "admin#create"
   post "logout_admin", to: "admin#logout"
+
+  get "add_tour", to: "tours#new"
+  post "add_tour", to: "tours#create"
   
 end

@@ -12,10 +12,13 @@
           <%= link_to "Book Tour", tours_path, class: "nav-link", method: :get %>
         </li>
         <li class="nav-item">
-          <%= link_to 'See Ticket',  tickets_path, class: "nav-link", method: :get %>
+          <%= link_to 'My Tickets',  tickets_path, class: "nav-link", method: :get %>
         </li>
         <li class="nav-item">
           <%= @user.is_admin ? ( link_to 'See All Ticket',  all_tickets_path, class: "nav-link" ) : "" %>
+        </li>
+        <li class="nav-item">
+          <%= @user.is_admin ? ( link_to 'Add Tour',  add_tour_path, class: "nav-link" ) : "" %>
         </li>
       </ul>
     </div>

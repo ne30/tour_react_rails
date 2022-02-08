@@ -12,14 +12,14 @@
             <th>Tour Code</th>
             <th>From </th>
             <th>To </th>
-            <th>Day</th>
+            <th>Date</th>
             <th>Price</th>
         </tr>
         <tr>
             <td><%= @chosen_tour.tour_code %></td>
             <td><%= @chosen_tour.from %></td>
             <td><%= @chosen_tour.to %></td>
-            <td><%= @chosen_tour.day %></td>
+            <td><%= @chosen_tour.date.strftime('%A, %d/%m/%Y') %></td>
             <td><%= @chosen_tour.price %></td>
         </tr>
     </table>

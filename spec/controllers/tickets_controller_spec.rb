@@ -38,7 +38,29 @@ RSpec.describe TicketsController, type: :controller do
       get(:showUserTickets, session: {:user_id => 11})
       expect(:tickets).to_not eq(nil)
     end
-
   end
 
+  describe "#cancelTicket" do
+    it "cancels ticket when there is no Companion for the user" do
+      allow_any_instance_of(TicketsController).to receive(:checkUser).and_return(:true)
+      post(:cancelTicket, params: {:param => 5})
+      expect(response).to redirect_to(tickets_path)
+      expect(flash[:success]).to be_present
+    end
+
+    it "cancels ticket when there is a companion for the user and also a companion for new pairing" do
+      allow_any_instance_of(TicketsController).to receive(:checkUser).and_return(:true)
+      post(:cancelTicket, params: {:param => 1})
+      expect(response).to redirect_to(tickets_path)
+      expect(flash[:success]).to be_present
+    end
+
+    it "cancels ticket when there is a companion for the user and no companion for a new pairing" do
+      allow_any_instance_of(TicketsController).to receive(:checkUser).and_return(:true)
+      post(:cancelTicket, params: {:param => 3})
+      expect(response).to redirect_to(tickets_path)
+      expect(flash[:success]).to be_present
+    end
+
+  end
 end

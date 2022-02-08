@@ -103,8 +103,4 @@ class ToursController <  ApplicationController
     def tourParams
         params.permit(:tour_code, :from, :to, :start_time, :end_time, :passenger_limit, :price, :date)
     end
-
-    def validateTour(tour)
-        return tour.valid?
-    end
 end

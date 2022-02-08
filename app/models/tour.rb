@@ -1,5 +1,6 @@
 class Tour < ApplicationRecord
     has_many :tickets
+    has_many :companions
     validates :tour_code, presence: true, uniqueness:true
     validates :from, presence: true
     validates :to, presence: true

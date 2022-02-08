@@ -13,20 +13,20 @@ Rails.application.routes.draw do
   post "sign_in", to: "login#create"
   post "logout", to: "login#logout"
 
+  get "add_tour", to: "tours#new"
   get "tours", to: "tours#showAllTour"
   get "chosen_tour", to: "tours#showTour"
+  post "add_tour", to: "tours#create"
   post "tours_with_companion", to: "tours#bookTicketWithCompanion"
   post "tours_without_companion", to: "tours#bookTicketWithoutCompanion"
-
+  
+  
   get "tickets", to: "tickets#showUserTickets"
   get "all_tickets", to: "tickets#showAllTickets"
-
+  post "cancel", to: "tickets#cancelTicket"
 
   get "admin", to: "admin#new"
   post "admin", to: "admin#create"
   post "logout_admin", to: "admin#logout"
 
-  get "add_tour", to: "tours#new"
-  post "add_tour", to: "tours#create"
-  
 end

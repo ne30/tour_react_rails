@@ -25,7 +25,9 @@ class TicketsController < ApplicationController
         ticket_to_cancel = Ticket.find(params[:param])
         user = ticket_to_cancel.user
         tour = ticket_to_cancel.tour
-        
+
+        #Call to model cancelTicket
+
         if ticket_to_cancel.companion_user_name.present?
             available_companion = tour.companions.find_by(gender:user.gender)
 

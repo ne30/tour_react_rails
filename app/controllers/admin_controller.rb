@@ -1,9 +1,11 @@
 class AdminController < ApplicationController
 
     def new
+        puts params
     end
 
     def create
+        puts params
         user = User.find_by(user_name: params[:user_name])
         if user.present? && user.authenticate(params[:password]) && user.is_admin
             session[:user_id] = user.id
